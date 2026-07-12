@@ -1,0 +1,210 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f0e8;
+  --ink: #1a1f1c;
+  --muted: #5c675f;
+  --line: #d4cfc3;
+  --accent: #0f6b4c;
+  --accent-ink: #ffffff;
+  --danger: #9b2c2c;
+  --warn: #8a5a00;
+  --ok: #0f6b4c;
+  --panel: #fffcf6;
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, #dfece4 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, #ebe4d4 0%, transparent 50%),
+    var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.55rem 1rem;
+  border-radius: 4px;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0.55rem 0.7rem;
+  border-radius: 4px;
+}
+
+textarea {
+  min-height: 220px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.85rem;
+}
+
+.app-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav button {
+  background: transparent;
+  color: var(--ink);
+  border-color: transparent;
+}
+
+.nav button.active {
+  border-color: var(--line);
+  background: var(--panel);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.15rem 1.25rem;
+}
+
+.stack {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.error {
+  color: var(--danger);
+  white-space: pre-wrap;
+}
+
+.verdict {
+  font-weight: 600;
+}
+
+.verdict.ready {
+  color: var(--ok);
+}
+
+.verdict.warn {
+  color: var(--warn);
+}
+
+.verdict.block {
+  color: var(--danger);
+}
+
+table.runs {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.runs th,
+table.runs td {
+  text-align: left;
+  padding: 0.65rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+table.runs tr {
+  cursor: pointer;
+}
+
+table.runs tr:hover td {
+  background: rgba(15, 107, 76, 0.05);
+}
+
+.login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.login-card {
+  width: min(420px, 100%);
+}
+
+.login-card h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  margin: 0 0 0.35rem;
+}
+
+pre.report {
+  overflow: auto;
+  background: #1a1f1c;
+  color: #e8efe9;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}

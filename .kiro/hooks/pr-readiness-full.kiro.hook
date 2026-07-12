@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "PR Readiness Coach (Full)",
+  "description": "On-demand full Bedrock PR readiness (warn-only; 120s). Kiro's hook runner may not inherit your shell — set AWS_PROFILE and AWS_REGION (and aws sso login) for the IDE process, or prefix the command locally; do not commit personal profile names.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "PR_READY_HOOK_LOCAL=0 PR_READY_HOOK_TIMEOUT_MS=120000 npm run -s hook",
+    "timeout": 120
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Test After Task",
+  "description": "Run tests after a spec task completes",
+  "version": "1",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm test",
+    "timeout": 60
+  }
+}

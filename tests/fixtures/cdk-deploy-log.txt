@@ -1,0 +1,38 @@
+Bundling asset PrReadinessCoachStack/AnalyzeFn/Code/Stage...
+
+  ...96ecb94edbcdc1c03c980abd29007459d4f137221e914-building/index.mjs  141.0kb
+
+⚡ Done in 33ms
+
+✨  Synthesis time: 2.28s
+
+PrReadinessCoachStack: creating CloudFormation changeset...
+Changeset arn:aws:cloudformation:ap-southeast-2:111122223333:changeSet/cdk-deploy-change-set/047a388f-b9f0-4081-9225-9953fae04d3d created
+PrReadinessCoachStack: deploying... [1/1]
+PrReadinessCoachStack | 0/8 | 5:20:35 AM | UPDATE_IN_PROGRESS   | AWS::CloudFormation::Stack | PrReadinessCoachStack User Initiated
+PrReadinessCoachStack | 3/8 | 5:21:03 AM | UPDATE_COMPLETE      | AWS::Lambda::Function     | AnalyzeFn (AnalyzeFn6E048BF8)
+PrReadinessCoachStack | 5/8 | 5:21:06 AM | UPDATE_COMPLETE      | AWS::CloudFormation::Stack | PrReadinessCoachStack
+
+✅  PrReadinessCoachStack
+
+✨  Deployment time: 37.28s
+
+Outputs:
+PrReadinessCoachStack.ApiKeyId = vnj3c764mh
+PrReadinessCoachStack.ApiUrl = https://0q5okjsag6.execute-api.ap-southeast-2.amazonaws.com/prod/
+PrReadinessCoachStack.PrReadyApiEndpoint22BC2F98 = https://0q5okjsag6.execute-api.ap-southeast-2.amazonaws.com/prod/
+PrReadinessCoachStack.Weird_Output = value-with-spaces and "quotes" & <brackets>
+# Edge: URL with query + fragment
+Posted to https://abc-def.execute-api.us-west-2.amazonaws.com/prod/analyze?x=1&y=2#frag ok
+# Edge: not an execute-api host (must stay)
+Docs at https://docs.aws.amazon.com/cdk/latest/guide/home.html
+# Edge: malformed / non-URL looking like execute-api host without scheme
+host execute-api.ap-southeast-2.amazonaws.com alone
+# Edge: nested-looking output name
+PrReadinessCoachStack.Nested.NotMatched = should-stay-because-regex-requires-single-segment
+PrReadinessCoachStack.Nested_Ok = https://z9.execute-api.eu-west-1.amazonaws.com/stage/
+
+Stack ARN:
+arn:aws:cloudformation:ap-southeast-2:111122223333:stack/PrReadinessCoachStack/abe6ab30-7d76-11f1-80f4-0a33a673a0d1
+
+✨  Total time: 57.94s

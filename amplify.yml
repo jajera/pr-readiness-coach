@@ -1,0 +1,12 @@
+# Unused by CI zip deploy. Amplify app/branch live in CDK; artifacts upload via
+# scripts/deploy-amplify.sh. Kept only so the Amplify console has a harmless stub.
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Use scripts/deploy-amplify.sh (manual zip deploy)"
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'

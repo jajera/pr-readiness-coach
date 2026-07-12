@@ -1,0 +1,13 @@
+node_modules/
+dist/
+cdk.out/
+cdk.out-*/
+cdk-outputs.json
+coverage/
+*.js.map
+.env
+.env.*
+!.env.example
+.cdk.staging/
+*.log
+.DS_Store

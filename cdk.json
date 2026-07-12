@@ -1,0 +1,22 @@
+{
+  "app": "npx tsx infra/bin/app.ts",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.d.ts",
+      "**/*.js",
+      "tsconfig.json",
+      "package*",
+      "yarn.lock",
+      "node_modules",
+      "test"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true
+  }
+}

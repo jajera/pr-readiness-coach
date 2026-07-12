@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "PR Readiness Coach",
+  "description": "Warn-only heuristic PR readiness on TypeScript/JavaScript save (30s ceiling)",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["*.ts", "*.tsx", "*.js", "*.mjs"]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm run -s hook",
+    "timeout": 30
+  }
+}

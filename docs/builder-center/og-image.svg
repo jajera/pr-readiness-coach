@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none" role="img" aria-label="PR Readiness Coach">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#050a0c"/>
+      <stop offset="0.45" stop-color="#0a1614"/>
+      <stop offset="1" stop-color="#061018"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="0.78" cy="0.42" r="0.5" gradientUnits="objectBoundingBox">
+      <stop stop-color="#14f1c8" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#0f6b4c" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#0f6b4c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#14f1c8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#14f1c8" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#14f1c8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="chipOk" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop stop-color="#0d3d2e"/>
+      <stop offset="1" stop-color="#145c42"/>
+    </linearGradient>
+    <linearGradient id="chipWarn" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop stop-color="#3a3010"/>
+      <stop offset="1" stop-color="#5a4a14"/>
+    </linearGradient>
+    <linearGradient id="chipBad" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop stop-color="#3a1218"/>
+      <stop offset="1" stop-color="#5a1e28"/>
+    </linearGradient>
+    <clipPath id="frame">
+      <rect width="1200" height="630" rx="8"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="630" fill="url(#bg)"/>
+    <rect width="1200" height="630" fill="url(#orb)"/>
+
+    <!-- Hex mesh (left / mid) -->
+    <g stroke="#14f1c8" stroke-opacity="0.12" stroke-width="1" fill="none">
+      <path d="M40 80 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M120 80 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M80 149 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M40 218 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M120 218 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M80 287 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M40 356 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M120 356 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M80 425 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M40 494 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+      <path d="M120 494 l40 -23 40 23 v46 l-40 23 -40 -23 z"/>
+    </g>
+
+    <!-- Neural graph (right visual anchor) -->
+    <g stroke="#14f1c8" stroke-opacity="0.35" stroke-width="1.5" fill="none">
+      <line x1="820" y1="180" x2="940" y2="240"/>
+      <line x1="940" y1="240" x2="1080" y2="200"/>
+      <line x1="940" y1="240" x2="980" y2="360"/>
+      <line x1="820" y1="180" x2="860" y2="320"/>
+      <line x1="860" y1="320" x2="980" y2="360"/>
+      <line x1="980" y1="360" x2="1100" y2="320"/>
+      <line x1="860" y1="320" x2="780" y2="400"/>
+      <line x1="980" y1="360" x2="1020" y2="470"/>
+      <line x1="780" y1="400" x2="900" y2="480"/>
+      <line x1="900" y1="480" x2="1020" y2="470"/>
+      <line x1="1080" y1="200" x2="1100" y2="320"/>
+    </g>
+    <g fill="#14f1c8">
+      <circle cx="820" cy="180" r="6" fill-opacity="0.9"/>
+      <circle cx="940" cy="240" r="9" fill-opacity="1"/>
+      <circle cx="1080" cy="200" r="5" fill-opacity="0.75"/>
+      <circle cx="860" cy="320" r="7" fill-opacity="0.85"/>
+      <circle cx="980" cy="360" r="10" fill-opacity="1"/>
+      <circle cx="1100" cy="320" r="5" fill-opacity="0.7"/>
+      <circle cx="780" cy="400" r="5" fill-opacity="0.7"/>
+      <circle cx="900" cy="480" r="7" fill-opacity="0.85"/>
+      <circle cx="1020" cy="470" r="6" fill-opacity="0.8"/>
+    </g>
+    <circle cx="940" cy="240" r="18" fill="none" stroke="#14f1c8" stroke-opacity="0.25" stroke-width="1"/>
+    <circle cx="980" cy="360" r="22" fill="none" stroke="#14f1c8" stroke-opacity="0.2" stroke-width="1"/>
+
+    <!-- Scan band -->
+    <rect x="0" y="250" width="1200" height="56" fill="url(#scan)"/>
+
+    <!-- Corner brackets (clear of status text) -->
+    <g stroke="#14f1c8" stroke-opacity="0.55" stroke-width="2" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <polyline points="32,72 32,32 72,32"/>
+      <polyline points="1168,72 1168,32 1128,32"/>
+      <polyline points="32,558 32,598 72,598"/>
+      <polyline points="1168,558 1168,598 1128,598"/>
+    </g>
+
+    <!-- Status rail -->
+    <text x="96" y="72" fill="#14f1c8" fill-opacity="0.7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="0.18em">SYSTEM // PR-READY v1</text>
+    <text x="1104" y="72" text-anchor="end" fill="#14f1c8" fill-opacity="0.55" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="0.12em">INFERENCE ONLINE</text>
+
+    <!-- Brand -->
+    <text x="72" y="220" fill="#e8fff8" font-family="Helvetica, Arial, sans-serif" font-size="58" font-weight="700">PR Readiness Coach</text>
+    <text x="72" y="268" fill="#7dcfb6" font-family="Helvetica, Arial, sans-serif" font-size="24">Multi-agent Bedrock pipeline for ship-ready pull requests</text>
+
+    <!-- Angular verdict panels (not pills) -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700">
+      <path d="M72 320 h150 l12 12 v36 l-12 12 H72 Z" fill="url(#chipOk)" stroke="#3dd68c" stroke-width="1.5"/>
+      <text x="147" y="356" text-anchor="middle" fill="#9af0c4">READY</text>
+
+      <path d="M246 320 h250 l12 12 v36 l-12 12 H246 Z" fill="url(#chipWarn)" stroke="#e6b84d" stroke-width="1.5"/>
+      <text x="371" y="356" text-anchor="middle" fill="#f0d78a">READY WITH WARNINGS</text>
+
+      <path d="M520 320 h176 l12 12 v36 l-12 12 H520 Z" fill="url(#chipBad)" stroke="#e86a7a" stroke-width="1.5"/>
+      <text x="608" y="356" text-anchor="middle" fill="#f0a0aa">NOT READY</text>
+    </g>
+
+    <!-- Pipeline strip -->
+    <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+      <rect x="72" y="420" width="640" height="88" fill="#071412" stroke="#1a4a3c" stroke-width="1"/>
+      <text x="92" y="452" fill="#14f1c8" fill-opacity="0.65" letter-spacing="0.16em">PIPELINE</text>
+      <text x="92" y="486" fill="#c8efe3">context  &gt;  heuristics  &gt;  Diff Analyst  &gt;  Risk  &gt;  Ship Coach</text>
+    </g>
+
+    <text x="72" y="560" fill="#5f8a7c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">CLI | GitHub Actions | Cognito UI | Amplify</text>
+  </g>
+</svg>

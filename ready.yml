@@ -1,0 +1,27 @@
+testFilePatterns:
+  - "**/*.test.ts"
+  - "**/*.test.js"
+  - "**/tests/**"
+forbiddenPatterns:
+  - "*.env"
+  - "*.env.*"
+  - "*.pem"
+  - "*credentials*"
+maxDiffSizeBytes: 102400
+docsPathAllowlist:
+  - "docs/**"
+  - "**/*.md"
+# Fixture demos + unit-test trees intentionally contain markers/sample secrets.
+# Directory-scoped only — avoid bare **/*.spec.ts which can match non-test paths.
+testPathAllowlist:
+  - "tests/**"
+  - "**/__tests__/**"
+  - "fixtures/**"
+customBlockers:
+  # Comment-form only so ready.yml pattern/description lines do not self-match
+  - pattern: "(?://|#)\\s*HACK\\b"
+    severity: blocker
+    description: "Unfinished-work markers in comments"
+  - pattern: "(?://|#)\\s*no-commit\\b"
+    severity: warning
+    description: "Commit-blocking markers should be removed before PR"
