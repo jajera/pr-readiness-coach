@@ -35,6 +35,17 @@ describe('redactDeployLogLine', () => {
       'Calling https://abc123.execute-api.ap-southeast-2.amazonaws.com/prod/analyze now';
     expect(redactDeployLogLine(line)).toBe('Calling *** now');
   });
+
+  it('redacts STS assumedRoleId (configure-aws-credentials style)', () => {
+    expect(
+      redactDeployLogLine(
+        'Authenticated as assumedRoleId AROAYW653WOEYED6QZA7Q:GitHubActions',
+      ),
+    ).toBe('Authenticated as assumedRoleId ***');
+    expect(
+      redactDeployLogLine('assumedRoleId AROABC123ONLY'),
+    ).toBe('assumedRoleId ***');
+  });
 });
 
 describe('redactDeployLog', () => {
