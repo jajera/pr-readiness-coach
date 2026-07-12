@@ -2,6 +2,8 @@
 
 AI coach that checks branch readiness before you open a pull request.
 
+![PR Readiness Coach architecture](docs/builder-center/pr-readiness-architecture.svg)
+
 ## Quick start
 
 ```bash

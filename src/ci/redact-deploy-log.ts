@@ -8,11 +8,15 @@ const EXECUTE_API_URL_RE =
 
 const STACK_OUTPUT_LINE_RE = /(PrReadinessCoachStack\.[A-Za-z0-9_]+) = .+/g;
 
+/** STS AssumedRoleUser.AssumedRoleId (e.g. AROA…:GitHubActions). */
+const ASSUMED_ROLE_ID_RE = /assumedRoleId\s+AROA[A-Z0-9]+(?::\S+)?/gi;
+
 /** Redact a single CDK deploy log line (or multi-line chunk). */
 export function redactDeployLogLine(line: string): string {
   return line
     .replace(EXECUTE_API_URL_RE, '***')
-    .replace(STACK_OUTPUT_LINE_RE, '$1 = ***');
+    .replace(STACK_OUTPUT_LINE_RE, '$1 = ***')
+    .replace(ASSUMED_ROLE_ID_RE, 'assumedRoleId ***');
 }
 
 /** Redact a full CDK deploy log (preserves newlines). */

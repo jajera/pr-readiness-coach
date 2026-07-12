@@ -492,7 +492,7 @@ Notes:
 - `AssumeCdkBootstrapRoles` lets the OIDC role assume CDK’s deploy/file-publishing/lookup roles (avoids “could not be used to assume … Proceeding anyway” warnings).
 - First-time `cdk bootstrap` is a separate, wider one-time admin action (not this CI role).
 - If CloudFormation reports a missing action during deploy, add only that action — CDK resource names use the `PrReadinessCoachStack-*` prefix.
-- **Public repo logs:** Deploy masks account id + stack outputs via `::add-mask::`, then pipes CDK through `node dist/ci/redact-deploy-log.js`. Covered end-to-end by `tests/unit/redact-deploy-log*.test.ts` + `tests/fixtures/cdk-deploy-log.txt` (library, CLI pipe, deploy.yml wiring, edge cases). Fetch `ApiUrl` / API key locally when setting secrets.
+- **Public repo logs:** Deploy uses quiet OIDC (`scripts/configure-aws-oidc.sh`) so STS `assumedRoleId` is never printed, masks account id + stack outputs via `::add-mask::`, then pipes CDK through `node dist/ci/redact-deploy-log.js` (also redacts execute-api URLs, stack output lines, and any residual `assumedRoleId AROA…`). Covered end-to-end by `tests/unit/redact-deploy-log*.test.ts` + `tests/fixtures/cdk-deploy-log.txt`. Fetch `ApiUrl` / API key locally when setting secrets.
 
 **3. GitHub repository settings** (Settings → Secrets and variables → Actions):
 
