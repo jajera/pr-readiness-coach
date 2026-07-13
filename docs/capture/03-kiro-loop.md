@@ -27,7 +27,11 @@ Local feedback on save (and on demand) without blocking merges; reuses the core 
 - Reload the Kiro window if panel entries are stale after file edits
 
 ## Demo evidence
-2026-07-12: `npm run hook` with a temporary unfinished-work marker in an added walkthrough line → `Mode: heuristic-only`, verdict `READY WITH WARNINGS`, printed warn-only message, exit `0`. Marker removed after the run. Later: `testPathAllowlist` keeps fixture secrets in `tests/**` from failing the hook.
+2026-07-12: `npm run hook` with a temporary unfinished-work marker in an added walkthrough line → `Mode: heuristic-only`, verdict `READY WITH WARNINGS`, printed warn-only message, exit `0`. Marker removed after the run. Later: `testPathAllowlist` keeps fixture secrets in `tests/**` from failing the hook. Full Bedrock hook run (`PR_READY_HOOK_LOCAL=0`) also returns `READY` with draft PR title/body.
+
+![Kiro Agent Hooks — Run Command Hook / PR Readiness Coach (Full)](03-kiro-hooks-panel.png)
+
+![Kiro / CLI hook run — full mode READY](03-hook-run.png)
 
 ## Open questions
 None — IDE `when`/`then` hooks + userTriggered full profile are the supported shape for this repo.

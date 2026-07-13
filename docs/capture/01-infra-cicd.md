@@ -39,5 +39,11 @@ Single language for app + infra; API keys for machine clients; Cognito for the o
 - Local: bootstrap → `cdk deploy` → CLI `--api` against live `ApiUrl` returned `Mode: full` report (2026-07-12).
 - OIDC **Deploy** on `main`: green with separate `deploy` + `deploy-amplify` jobs; `AppUrl` serves Cognito-gated runs UI (2026-07-12).
 
+![GitHub Actions Deploy — ci → deploy → deploy-amplify](01-deploy-actions.png)
+
+![Amplify owner UI — runs list (NOT READY / READY / READY WITH WARNINGS)](01-amplify-ui.png)
+
+![Amplify Try it — POST /ui/analyze with Cognito JWT](01-amplify-try-it.png)
+
 ## Open questions
 None for hosting — DynamoDB + Amplify zip path is the default demo path.

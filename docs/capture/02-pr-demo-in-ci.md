@@ -26,7 +26,15 @@ Runners need no Bedrock credentials for the happy path; same Lambda core as CLI 
 
 ## Demo evidence
 - **Prep (2026-07-12):** `PR_READY_API_URL` and `PR_READY_API_KEY` set in repo Actions secrets from live stack outputs (`ap-southeast-2`). Local CLI `--api` returned `Mode: full`.
-- **PR comment upsert:** proven on later PRs (e.g. DynamoDB/Amplify/Cognito work) — warn-only job stays green; comment marker `<!-- pr-readiness-coach -->` upserts.
+- **PR comment upsert:** warn-only job stays green; comment marker `<!-- pr-readiness-coach -->` upserts on open/update.
+
+Clean full-mode comment:
+
+![GitHub Actions PR comment — READY](02-pr-comment-ready.png)
+
+Comment with coach warnings (still warn-only / green job):
+
+![GitHub Actions PR comment — READY WITH WARNINGS](02-pr-comment-warnings.png)
 
 ## Open questions
 None — local heuristics fallback shipped; full mode uses the deployed `/analyze` API key path.
