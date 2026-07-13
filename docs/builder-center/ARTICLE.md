@@ -6,7 +6,11 @@ Tag: `#productivity`
 
 Opening a pull request should feel like a confident hand-off, not a hopeful shrug. PR Readiness Coach helps developers answer a simple question before they click “Create pull request”: is this branch actually ready? The coach gathers branch context—diff, changed files, optional test signals, Spec task counts, and a project `ready.yml` Definition of Ready—runs fast local heuristic checks for secrets and unfinished work, then (when available) walks a short multi-agent Bedrock pipeline: Diff Analyst, Risk Reviewer, and Ship Coach. The result is a structured readiness report with a clear verdict (`READY`, `READY WITH WARNINGS`, or `NOT READY`), blockers, warnings, a checklist, draft PR title/body, and top recommended actions.
 
-The same core library powers four entry points: a local CLI (`pr-ready`), an AWS API (API Gateway + Lambda) used by GitHub Actions, optional Kiro IDE hooks (file save / manual / agent stop) that warn without blocking, and an owner-only Amplify SPA (Cognito sign-in → run history + Try it). That shared core is the point—local demos, CI comments, IDE hooks, and the UI stay comparable because they share prompts, heuristics, and report schema.
+![Owner UI — run history across all three verdicts](../capture/01-amplify-ui.png)
+
+The same core library powers four entry points: a local CLI (`pr-ready`), an AWS API (API Gateway + Lambda) used by GitHub Actions, optional Kiro IDE hooks that warn without blocking, and an owner-only Amplify SPA (Cognito sign-in → run history + Try it). That shared core is the point—local demos, CI comments, IDE hooks, and the UI stay comparable because they share prompts, heuristics, and report schema.
+
+![GitHub Actions PR comment — READY (full mode)](../capture/02-pr-comment-ready.png)
 
 ## How You Built It
 
@@ -16,11 +20,27 @@ Tooling choices favored one language end-to-end: TypeScript for the CLI, core li
 
 Fixtures under `fixtures/demo-app` give a reproducible demo: `not-ready` fails with secrets and TODOs; `ready` passes clean. `fixtures/demo.sh` documents exact `--local --path` commands and expected verdicts so reviewers can verify without AWS credentials.
 
+The CI path posts a single upserted Markdown comment (warn-only—never a hard merge gate in v1):
+
+![PR comment — READY WITH WARNINGS](../capture/02-pr-comment-warnings.png)
+
+IDE feedback uses the same coach via Kiro Agent Hooks:
+
+![Kiro — PR Readiness Coach (Full) hook](../capture/03-kiro-hooks-panel.png)
+
 ## AWS Services Used / Architecture Overview
 
-Infrastructure is AWS CDK (TypeScript), not SAM: API Gateway REST API with API key + usage plan for machine clients (CLI / GitHub Actions), Cognito (owner-only) for the Amplify-hosted SPA, Lambda (Node.js 24.x, ≥90s timeout, 512 MB) bundling the shared core, IAM for CloudWatch Logs and Bedrock invoke/converse, DynamoDB run history (`-c enableDynamo=true` on Deploy), and an Amplify Hosting app/branch. The SPA is **zip-deployed** after CDK (`deploy-amplify` job / `npm run deploy:amplify`)—no GitHub↔Amplify Git connection. Deploy uses GitHub Actions OIDC on push to `main`—no long-lived access keys in the repo. PR workflow `pr-ready.yml` builds base/head context, POSTs to `/analyze`, upserts a single Markdown PR comment, uploads a JSON artifact (≥14 days), and always exits 0 (warn-only; never a hard merge gate in v1).
+![Architecture — Amplify, Cognito, API Gateway, Lambda, Bedrock, DynamoDB](pr-readiness-architecture.png)
 
-Auth is dual-path: API Gateway **API keys** for GHA/CLI (`POST /analyze`); **Cognito JWT** for the owner UI (`GET /runs`, `GET /runs/{runId}`, `POST /ui/analyze`). WAF and IAM SigV4 remain out of scope. The Lambda re-runs heuristics on the submitted payload so CI cannot be tricked by client-only findings for security-sensitive blockers.
+Infrastructure is AWS CDK (TypeScript), not SAM: API Gateway REST API with API key + usage plan for machine clients (CLI / GitHub Actions), Cognito (owner-only) for the Amplify-hosted SPA, Lambda (Node.js 24.x, ≥90s timeout, 512 MB) bundling the shared core, IAM for CloudWatch Logs and Bedrock invoke/converse, DynamoDB run history (`-c enableDynamo=true` on Deploy), and an Amplify Hosting app/branch. The SPA is **zip-deployed** after CDK (`deploy-amplify` job / `npm run deploy:amplify`)—no GitHub↔Amplify Git connection. Deploy uses GitHub Actions OIDC on push to `main`—no long-lived access keys in the repo.
+
+![Deploy workflow — ci → deploy → deploy-amplify](../capture/01-deploy-actions.png)
+
+Auth is dual-path: API Gateway **API keys** for GHA/CLI (`POST /analyze`); **Cognito JWT** for the owner UI (`GET /runs`, `GET /runs/{runId}`, `POST /ui/analyze`). The SPA Try-it page calls the same analyze path with a JWT:
+
+![Amplify Try it — POST /ui/analyze](../capture/01-amplify-try-it.png)
+
+WAF and IAM SigV4 remain out of scope. The Lambda re-runs heuristics on the submitted payload so CI cannot be tricked by client-only findings for security-sensitive blockers.
 
 ## What You Learned
 
@@ -41,4 +61,4 @@ npm run pr-ready -- --local --path fixtures/demo-app/not-ready
 npm run pr-ready -- --local --path fixtures/demo-app/ready
 ```
 
-Operator details live in `docs/OPERATOR_WALKTHROUGH.md` (including Cognito owner UI + Amplify zip deploy). Capture notes from building infra, PR comments, and the Kiro loop are under `docs/capture/`.
+Operator details live in `docs/OPERATOR_WALKTHROUGH.md` (including Cognito owner UI + Amplify zip deploy). Capture notes and full-size screenshots live under `docs/capture/`.
