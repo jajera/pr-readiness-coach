@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Docs Sync Check",
+  "description": "Ask whether README / operator walkthrough / capture docs need updates after src or ready.yml edits",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx", "ready.yml"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A matching file was just edited. Compare that change against this Documentation_Set only:\n- README.md\n- docs/OPERATOR_WALKTHROUGH.md\n- docs/capture/\n\nProduce a short Drift_Report: list each affected documentation path and the concrete edits required.\nIf nothing needs updating, reply exactly that no documentation updates are needed.\n\nRules:\n- Report drift only. Do not suggest unrelated refactors, style changes, or extra improvements.\n- Do not edit files unless asked in a follow-up; this hook is detection and report only.\n- If the edited file is ready.yml, specifically check OPERATOR_WALKTHROUGH sections that describe ready.yml / Definition of Ready.\n- Do not name other IDEs or AI assistants. Speak in terms of this repository and Kiro hooks."
+  }
+}

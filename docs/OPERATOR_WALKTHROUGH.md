@@ -574,6 +574,7 @@ Hooks live under `.kiro/hooks/*.kiro.hook` using the IDE schema (`enabled` / `wh
 | File | `when.type` | Behavior |
 |------|-------------|----------|
 | `pr-readiness-coach.kiro.hook` | `fileEdited` (`*.ts` / `*.tsx` / `*.js` / `*.mjs`) | Heuristic-only `npm run hook`, 30s |
+| `docs-sync.kiro.hook` | `fileEdited` (`src/**/*.ts` / `src/**/*.tsx` / `ready.yml`) | `askAgent` docs drift report (credits; IDE only) |
 | `pr-readiness-full.kiro.hook` | `userTriggered` | Full Bedrock (`PR_READY_HOOK_LOCAL=0`), 120s — use play in Agent Hooks |
 | `build-on-stop.kiro.hook` | `agentStop` | `npm run build` after agent turn |
 | `test-after-task.kiro.hook` | `postTaskExecution` | `npm test` after a spec task completes |

@@ -3,6 +3,7 @@
 ## Decision
 Warn-only analysis via `src/hook/kiro-hook.ts` and IDE hooks under `.kiro/hooks/*.kiro.hook` using the **IDE** schema (`enabled` / `when` / `then` — not the CLI 3.0 `version: v1` + `hooks[]` wrapper, which the Agent Hooks panel does not load):
 - `pr-readiness-coach.kiro.hook` — `fileEdited` on `ts|tsx|js|mjs`, heuristic-only, 30s
+- `docs-sync.kiro.hook` — `fileEdited` on `src/**/*.ts(x)` / `ready.yml`, `askAgent` docs drift report (credits; IDE only)
 - `pr-readiness-full.kiro.hook` — `userTriggered`, full Bedrock (`PR_READY_HOOK_LOCAL=0`), 120s
 - `build-on-stop.kiro.hook` — `agentStop` → `npm run build`
 - `test-after-task.kiro.hook` — `postTaskExecution` → `npm test`
