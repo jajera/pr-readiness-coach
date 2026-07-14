@@ -13,9 +13,10 @@ Built entirely inside Kiro using the spec-driven workflow: requirements → desi
 ## Deliverables
 
 | File | Purpose |
-|------|---------|
+| ---- | ------- |
 | [form-submission.md](form-submission.md) | Paste-ready challenge form fields |
-| [builder-center-post.md](builder-center-post.md) | Builder Center / community article |
+| [builder-center-post.md](builder-center-post.md) | Builder Center article draft + form fields |
+| [Builder Center article](https://builder.aws.com/content/3GTOz2yP0In7OD0EpIntARL4lgJ/kiro-birthday-2026-challenge-day-1-hook) | Published Day 1 post |
 | [social-post.md](social-post.md) | Social post draft with tags |
 | [video-slideshow.md](video-slideshow.md) | Smoke runbook + silent demo script |
 | [Demo video](https://youtu.be/2GepvnoJ-i8) | Published YouTube walkthrough |

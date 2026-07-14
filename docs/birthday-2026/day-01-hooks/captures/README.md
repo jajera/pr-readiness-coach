@@ -10,7 +10,7 @@ python3 build-demo.py
 Writes `day-01-docs-sync-demo.mp4`. Needs `ffmpeg`, Pillow, and source files:
 
 | File | Kind |
-|------|------|
+| ---- | ---- |
 | `02-hooks-panel.png` | Small UI crop (Agent Hooks) |
 | `03-src-save-docs-sync.mp4` | Full-IDE live recording |
 | `04-ready-yml-docs-sync.mp4` | Full-IDE live recording |
