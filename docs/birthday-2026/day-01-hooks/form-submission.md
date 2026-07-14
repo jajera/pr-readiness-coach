@@ -14,32 +14,36 @@ PR Readiness Coach
 
 ## Repository URL
 
-https://github.com/jajera/pr-readiness-coach
+<https://github.com/jajera/pr-readiness-coach>
 
 ## Short Description
 
-PR Readiness Coach is an AI-powered tool that checks branch readiness before you open a pull request, using heuristic checks and Amazon Bedrock for diff analysis, risk review, and ship coaching. For Day 1, I added a Docs Sync Check hook that fires whenever source files or the readiness config are saved in Kiro, automatically detecting documentation drift and reporting exactly which docs need updating.
+<!-- Form: "Please give us a short description (2–3 sentences) of your project" -->
+
+PR Readiness Coach checks whether a branch is ready to open as a pull request, combining local heuristic checks with Amazon Bedrock for diff analysis, risk review, and ship coaching. For Day 1 of Kiro Birthday Week, I added a Docs Sync Check hook that runs when I save files under `src/` or `ready.yml` in Kiro and reports which docs have drifted (or confirms the docs still match).
 
 ## How Kiro Was Used
 
-The Docs Sync Check hook was built entirely inside Kiro using the spec-driven development workflow. I started with a requirements document defining the hook's trigger patterns, agent prompt scope, and coexistence rules with existing hooks. The design document mapped out the hook schema, prompt design, and the Birthday 2026 documentation architecture. Tasks broke the work into discrete implementation steps with property-based verification of the hook JSON schema.
+<!-- Form: "Please tell us how Kiro was used (150–300 words)" — ~220 words -->
 
-The hook itself uses Kiro's `fileEdited` event with an `askAgent` action — when I save any TypeScript file under `src/` or the `ready.yml` config, the Kiro agent compares the change against the documentation set (README, operator walkthrough, and capture notes) and produces a Drift Report naming affected paths and concrete edits needed.
+I used Kiro end-to-end for Day 1: specs, hook authoring, steering, and the live save→agent loop that powers Docs Sync Check.
 
-This repo now has five Kiro hooks working together:
+I started in Kiro’s spec workflow with requirements for trigger patterns (`src/**/*.ts`, `src/**/*.tsx`, `ready.yml`), a short Drift Report prompt, and coexistence with the repo’s existing hooks. Design covered the `.kiro.hook` schema and how the agent should scope reads to README, the operator walkthrough, and capture notes. Tasks broke implementation into hook JSON, docs touchpoints, and smoke verification.
 
-- **Docs Sync Check** — `fileEdited` on `src/**/*.ts(x)` + `ready.yml` → `askAgent` producing a Drift Report
-- **PR Readiness Coach** — `fileEdited` on `*.ts, *.tsx, *.js, *.mjs` → `runCommand` readiness check
-- **PR Readiness Coach (Full)** — `userTriggered` → `runCommand` full AI analysis pipeline
-- **Build Check** — `agentStop` → `runCommand` compile verification
-- **Test After Task** — `postTaskExecution` → `runCommand` test suite
+The hook is `fileEdited` → `askAgent`. Saving a matching file wakes Kiro; the agent compares the change to the documentation set and returns a Drift Report with paths and concrete edits, or a clean signal when nothing drifted. That is the Day 1 “meaningful hook”: docs stay honest without a separate checklist.
 
-Steering files guided project conventions (TypeScript ESM, Node 24+, error handling patterns) and agent behaviour throughout. The entire flow — from spec authoring through hook implementation to smoke verification — happened inside Kiro with no context-switching to other tools.
+This project now runs five Kiro hooks together. Docs Sync Check asks the agent on those save patterns. PR Readiness Coach runs a readiness command on broader TypeScript/JavaScript saves. A user-triggered full readiness run drives the Bedrock analysis path. Build Check compiles on agent stop. Test After Task runs the suite after task execution.
+
+Steering files kept conventions consistent (TypeScript ESM, Node, error handling) while I iterated in Kiro. Smoke runs in Kiro confirmed the hook fires on expected saves and stays quiet on negatives. Specs → hook → live agent report—all inside Kiro for this challenge day.
 
 ## Demo Video URL
 
-https://youtu.be/2GepvnoJ-i8
+<https://youtu.be/2GepvnoJ-i8>
 
 ## Social Post URL
 
-<!-- placeholder: paste URL after posting -->
+<https://www.linkedin.com/posts/john-ajera_kiro-birthday-week-day-1-docs-sync-check-share-7482625712806408193-hS7e/>
+
+## Builder Center Article URL
+
+<https://builder.aws.com/content/3GTOz2yP0In7OD0EpIntARL4lgJ/kiro-birthday-2026-challenge-day-1-hook>

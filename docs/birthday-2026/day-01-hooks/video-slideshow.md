@@ -223,7 +223,7 @@ Use any screen recorder (OBS, SimpleScreenRecorder, GNOME Screenshot + ffmpeg, e
 3. **Add captions**: burn in caption text per beat (use ffmpeg `drawtext` or your editor's subtitle tool)
 4. **Export**: MP4, H.264, 30fps, ≤ 50MB (challenge form likely has size limits)
 5. **Upload**: post to a public host (YouTube unlisted, Loom, or direct upload to challenge form)
-6. **Form**: paste Social Post URL into `form-submission.md` when posted (Demo Video URL already set)
+6. **Form**: Demo Video + Social Post URLs are set; submit the challenge form when ready
 
 ### Timing Budget
 

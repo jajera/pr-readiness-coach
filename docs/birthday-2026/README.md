@@ -11,8 +11,8 @@ Five-day coding challenge celebrating Kiro's birthday. Each day introduces a new
 ## Daily Challenges
 
 | Day | Theme | Folder |
-|-----|-------|--------|
-| 1 | Kiro Agent Hooks | [day-01-hooks](day-01-hooks/README.md) |
+| --- | ----- | ------ |
+| 1 | Kiro Agent Hooks | [day-01-hooks](day-01-hooks/README.md) — [Builder Center](https://builder.aws.com/content/3GTOz2yP0In7OD0EpIntARL4lgJ/kiro-birthday-2026-challenge-day-1-hook) |
 | 2 | TBA | [day-02](day-02/README.md) |
 | 3 | TBA | [day-03](day-03/README.md) |
 | 4 | TBA | [day-04](day-04/README.md) |
