@@ -50,6 +50,7 @@ Exit codes: `0` READY / READY WITH WARNINGS, `1` NOT READY, `2` usage or transpo
 - [Operator Walkthrough](docs/OPERATOR_WALKTHROUGH.md) — CLI usage, deploy, Cognito/Amplify UI, and demo steps
 - [Full Walkthrough (hosted)](https://jajera.github.io/pr-readiness-coach-walkthrough/) — detailed end-to-end guide with screenshots
 - [Builder Center Article](docs/builder-center/ARTICLE.md) — community write-up
+- [Birthday 2026 Challenge](docs/birthday-2026/README.md) — Kiro Birthday Week daily coding challenge materials
 
 ## Deploy
 
