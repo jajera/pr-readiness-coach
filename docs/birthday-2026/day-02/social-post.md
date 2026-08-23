@@ -2,6 +2,6 @@
 
 https://github.com/jajera/pr-readiness-coach
 
-#BuildWithKiro #TeamKiro @kirodotdev
+\#BuildWithKiro \#TeamKiro @kirodotdev
 
 📎 Attach demo video when posting.
