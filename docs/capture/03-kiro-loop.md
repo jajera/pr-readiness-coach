@@ -2,6 +2,7 @@
 
 ## Decision
 Warn-only analysis via `src/hook/kiro-hook.ts` and IDE hooks under `.kiro/hooks/*.kiro.hook` using the **IDE** schema (`enabled` / `when` / `then` — not the CLI 3.0 `version: v1` + `hooks[]` wrapper, which the Agent Hooks panel does not load):
+
 - `pr-readiness-coach.kiro.hook` — `fileEdited` on `ts|tsx|js|mjs`, heuristic-only, 30s
 - `docs-sync.kiro.hook` — `fileEdited` on `src/**/*.ts(x)` / `ready.yml`, `askAgent` docs drift report (credits; IDE only)
 - `pr-readiness-full.kiro.hook` — `userTriggered`, full Bedrock (`PR_READY_HOOK_LOCAL=0`), 120s
@@ -9,6 +10,7 @@ Warn-only analysis via `src/hook/kiro-hook.ts` and IDE hooks under `.kiro/hooks/
 - `test-after-task.kiro.hook` — `postTaskExecution` → `npm test`
 
 ## What we configured
+
 - Default save-hook path is local heuristics (`PR_READY_HOOK_LOCAL` unset or not `0`)
 - Manual / CLI full profile uses `PR_READY_HOOK_LOCAL=0` and `PR_READY_HOOK_TIMEOUT_MS=120000`
 - Full hook needs `AWS_PROFILE` + `AWS_REGION` visible to the Kiro process (or the terminal); do not commit personal profile names in the hook command
@@ -21,6 +23,7 @@ Warn-only analysis via `src/hook/kiro-hook.ts` and IDE hooks under `.kiro/hooks/
 Local feedback on save (and on demand) without blocking merges; reuses the core module shared with CLI and Lambda. Full Bedrock stays on the slower userTriggered/CLI path so save stays under 30s.
 
 ## Pitfalls
+
 - Full Bedrock pipeline often exceeds 30s — keep fileEdited on heuristics
 - Hook must never hard-fail the editor workflow (exit 0)
 - Do not claim Kiro runs inside GitHub Actions
