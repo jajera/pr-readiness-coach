@@ -1,6 +1,6 @@
 # Weekend Productivity Challenge: PR Readiness Coach
 
-#productivity
+Tag: productivity
 
 ## Vision & What the App Does
 
