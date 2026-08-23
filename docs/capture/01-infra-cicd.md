@@ -6,6 +6,7 @@ Use AWS CDK (TypeScript) for API Gateway + Lambda + API key/usage plan + Cognito
 Bootstrap: try default `cdk bootstrap` first; on hardened accounts that deny `s3:PutBucketPublicAccessBlock`, retry with `--public-access-block-configuration false` (skips that API call only; bucket stays non-public).
 
 ## What we configured
+
 - `infra/lib/pr-readiness-stack.ts`: NodejsFunction entry `src/lambda/handler.ts`, runtime Node.js 24.x, timeout 90s, memory 512 MB, Bedrock invoke/converse IAM scoped to Nova Lite + Haiku 4.5 inference profile / foundation-model ARNs (not `*`)
 - API: `POST /analyze` (API key); Cognito-protected `GET /runs`, `GET /runs/{runId}`, `POST /ui/analyze`
 - Outputs: `ApiUrl`, `ApiKeyId`, Cognito IDs, `AmplifyAppId`, `AmplifyBranchName`, `AppUrl` (key **value** retrieved once; never in stack outputs)
@@ -23,6 +24,7 @@ Bootstrap: try default `cdk bootstrap` first; on hardened accounts that deny `s3
 Single language for app + infra; API keys for machine clients; Cognito for the owner SPA; Amplify zip deploy avoids a GitHub token. 90s Lambda headroom for sequential Bedrock calls (~20s each). OIDC keeps the public repo free of cloud credentials.
 
 ## Pitfalls
+
 - Bedrock: Model access page retired; auto-enable on first invoke still needs account capacity (`authorizationStatus: AUTHORIZED`, non-zero quotas). Demo `ap-southeast-2`: Nova Lite on-demand + Ship Coach Claude Haiku 4.5 via `au.anthropic.claude-haiku-4-5-20251001-v1:0` (Claude 3 Haiku is LEGACY). Anthropic use-case / Marketplace may still apply. IAM Admin ≠ inference if quotas are 0.
 - API key value is not in stack outputs (security); one-time console/CLI retrieval into GitHub **Secrets** only
 - Vite `VITE_*` are bake-time — re-run `deploy-amplify` when API/Cognito outputs change
@@ -36,6 +38,7 @@ Single language for app + infra; API keys for machine clients; Cognito for the o
 - Full-mode AI can still over-flag; prompts now calibrate docs/region-default changes as low risk — heuristics + `docsPathAllowlist` remain the reproducible baseline
 
 ## Demo evidence
+
 - Local: bootstrap → `cdk deploy` → CLI `--api` against live `ApiUrl` returned `Mode: full` report (2026-07-12).
 - OIDC **Deploy** on `main`: green with separate `deploy` + `deploy-amplify` jobs; `AppUrl` serves Cognito-gated runs UI (2026-07-12).
 
