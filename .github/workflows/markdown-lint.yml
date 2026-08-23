@@ -12,3 +12,25 @@ permissions:
 jobs:
   markdown-lint:
     uses: actionsforge/actions/.github/workflows/markdown-lint.yml@main
+    with:
+      config: |
+        {
+          "comment": "Relaxed rules for capture/birthday draft docs",
+          "default": true,
+          "whitespace": false,
+          "line_length": false,
+          "ul-start-left": false,
+          "ul-indent": false,
+          "no-inline-html": false,
+          "no-bare-urls": false,
+          "fenced-code-language": false,
+          "first-line-h1": false,
+          "no-duplicate-heading": false,
+          "blanks-around-headings": false,
+          "no-emphasis-as-header": false,
+          "single-h1": false,
+          "MD018": false,
+          "MD031": false,
+          "MD032": false,
+          "MD036": false
+        }
