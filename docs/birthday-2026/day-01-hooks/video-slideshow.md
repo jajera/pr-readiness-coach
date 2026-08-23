@@ -151,17 +151,19 @@ Use any screen recorder (OBS, SimpleScreenRecorder, GNOME Screenshot + ffmpeg, e
 
 ### Beat-by-Beat Recording Procedure
 
-**Beat 1 — Title Card (5s)**
+#### Beat 1 — Title Card (5s)
 
 - Create a simple title image or use a text editor fullscreen with:
-  ```
+
+  ```text
   PR Readiness Coach
   Day 1 — Docs Sync Check
   https://github.com/jajera/pr-readiness-coach
   ```
+
 - Hold for 5 seconds. Add caption overlay in post: "Day 1 — Docs Sync Check"
 
-**Beat 2 — Hooks Panel (5–8s)**
+#### Beat 2 — Hooks Panel (5–8s)
 
 1. Click the Agent Hooks panel to bring it into focus
 2. Slowly scroll so all five hooks are visible:
@@ -173,7 +175,7 @@ Use any screen recorder (OBS, SimpleScreenRecorder, GNOME Screenshot + ffmpeg, e
 3. Pause with Docs Sync Check highlighted/visible for 3s
 4. Caption: "Five hooks configured, Docs Sync Check enabled"
 
-**Beat 3 — Positive: src/ save (8–12s)**
+#### Beat 3 — Positive: src/ save (8–12s)
 
 1. Click the `src/core/errors.ts` tab
 2. Place cursor at end of any line
@@ -185,7 +187,7 @@ Use any screen recorder (OBS, SimpleScreenRecorder, GNOME Screenshot + ffmpeg, e
 8. Caption: "Saving a TypeScript file under src/ …"
 9. Once agent output is visible, hold for 2–3s so viewer can read
 
-**Beat 4 — Positive: ready.yml save (8–12s)**
+#### Beat 4 — Positive: ready.yml save (8–12s)
 
 1. Click the `ready.yml` tab
 2. Add a trailing blank line or a YAML comment: `# smoke`
@@ -196,24 +198,28 @@ Use any screen recorder (OBS, SimpleScreenRecorder, GNOME Screenshot + ffmpeg, e
 7. Hold for 2–3s once output appears
 8. **Verify**: only Docs Sync output, no `npm run hook` terminal for PR Readiness Coach
 
-**Beat 5 — Negative Note (4–5s)**
+#### Beat 5 — Negative Note (4–5s)
 
 - No live action needed. In post-production, overlay a caption:
-  ```
+
+  ```text
   Files outside src/ and ready.yml don't trigger Docs Sync.
   src/ TS may co-fire PR Readiness Coach — that's expected.
   ```
+
 - Hold for 4–5 seconds. Can show the hooks panel or a static editor view.
 
-**Beat 6 — Close Card (5s)**
+#### Beat 6 — Close Card (5s)
 
 - Show a closing screen (text editor fullscreen or image):
-  ```
+
+  ```text
   Built with Kiro — specs, hooks, agent workflow
 
   https://github.com/jajera/pr-readiness-coach
   #BuildWithKiro #TeamKiro @kirodotdev
   ```
+
 - Hold for 5 seconds
 
 ### Post-Recording

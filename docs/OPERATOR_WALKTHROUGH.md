@@ -163,7 +163,7 @@ Invited users start in `FORCE_CHANGE_PASSWORD`. Prefer signing in on the SPA (it
 
 The SPA is hosted on **Amplify Hosting**, but **not** via a GitHub↔Amplify console connection.
 
-**How it works**
+#### How it works
 
 1. **CDK** creates an Amplify app + `main` branch (`enableAutoBuild: false`, no repository).
 2. **Separate Deploy job** `deploy-amplify` (after `deploy` / CDK) runs `scripts/deploy-amplify.sh`:
@@ -171,14 +171,14 @@ The SPA is hosted on **Amplify Hosting**, but **not** via a GitHub↔Amplify con
    - Builds `web/` with `VITE_*` baked in
    - Zip-uploads to Amplify (`create-deployment` → upload → `start-deployment`)
 
-**Caveats**
+#### Caveats
 
 - **Vite bake-time env:** `VITE_API_URL` / Cognito IDs are compiled into the JS bundle. The Amplify job **must** run after CDK so those outputs exist. Re-run `deploy-amplify` (or `npm run deploy:amplify`) whenever API/Cognito outputs change.
 - **Separate jobs on purpose:** CDK failures stay in `deploy`; SPA/build/Amplify failures stay in `deploy-amplify` so they are easy to spot.
 - **No `VITE_API_KEY`:** browser auth is Cognito JWT only.
 - Root `amplify.yml` is unused for this zip path (buildSpec on the Amplify app is console-compat only).
 
-**Local / operator**
+#### Local / operator
 
 ```bash
 # After CDK deploy
