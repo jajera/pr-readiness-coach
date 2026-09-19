@@ -46,7 +46,7 @@
     "@types/aws-lambda": "^8.10.163",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^26.5.1",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.1",
     "aws-cdk": "^2.1141.0",
     "aws-cdk-lib": "^2.268.0",
     "constructs": "^10.8.1",
@@ -54,6 +54,6 @@
     "fast-check": "^4.9.0",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.1"
   }
 }
