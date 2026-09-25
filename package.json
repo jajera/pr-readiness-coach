@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.163",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.1",
     "@vitest/coverage-v8": "^5.0.1",
     "aws-cdk": "^2.1141.0",
     "aws-cdk-lib": "^2.268.0",
